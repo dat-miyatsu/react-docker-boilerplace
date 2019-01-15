@@ -5,7 +5,7 @@ import { store, changeMessage } from '../redux'
 export function HelloWorld (props) {
   return (
     <div className='hello-world'>
-      <p>Hello world!</p>
+      <p>Hello asfasdfasfasd world!</p>
       <p> {props.exampleMessage} </p>
     </div>
   )
