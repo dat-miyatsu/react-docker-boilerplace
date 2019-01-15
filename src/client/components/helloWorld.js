@@ -1,12 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { store, changeMessage } from '../redux'
+import AppDemo from './AppDemo/AppDemo'
 
 export function HelloWorld (props) {
   return (
     <div className='hello-world'>
-      <p>Hello asfasdfasfasd world!</p>
+      <p>Hello world!</p>
       <p> {props.exampleMessage} </p>
+
+      <AppDemo />
+
     </div>
   )
 }

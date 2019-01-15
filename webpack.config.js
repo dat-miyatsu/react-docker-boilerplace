@@ -7,9 +7,13 @@ const plugins = [
     verbose: true
   }),
   new HtmlWebpackPlugin({
-    template: path.join(__dirname, 'src/server/views/index.html'),
-    filename: 'index.html',
-    inject: 'body'
+    // template: 'index.ejs',
+    minify: {
+      removeComments: true,
+      collapseWhitespace: true,
+      removeAttributeQuotes: true
+    },
+    chunksSortMode: 'dependency'
   })
 ]
 
@@ -23,10 +27,24 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.html$/,
+        exclude: [/node_modules/, require.resolve('./dist/index.html')],
+        use: {
+          loader: 'file-loader',
+          query: {
+            name: '[name].[ext]'
+          }
+        }
+      },
+      {
         test: /\.jsx?$/,
         loaders: 'babel-loader',
         include: __dirname,
         exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css!'
       }
     ]
   },
